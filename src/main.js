@@ -334,7 +334,7 @@ function AboutSection() {
           h(
             'p',
             { className: 'about__body' },
-            "I'm a Computer Science graduate from the National University of Singapore, currently building my own startup and exploring AI and Machine Learning."
+            "I'm a Computer Science undergraduate at the National University of Singapore, currently building my own startup and exploring AI and Machine Learning."
           ),
           h(
             'p',
