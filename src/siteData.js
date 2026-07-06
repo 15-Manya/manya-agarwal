@@ -1,0 +1,233 @@
+export const siteData = {
+  education: [
+    {
+      school: 'National University of Singapore (NUS)',
+      degree: 'Bachelor of Science (BS), Computer Science',
+      period: 'August 2024 - May 2028',
+    },
+    {
+      school: "St. Patrick's Junior College",
+      degree: 'Junior College',
+      period: 'April 2011 - March 2024',
+    },
+  ],
+  projects: [
+    {
+      slug: 'nextbook',
+      title: 'NextBook',
+      period: 'Project',
+      url: 'https://orbital-project-sage.vercel.app/',
+      description: 'My first full-stack application: a personalised book recommendation platform built completely from scratch.',
+      details: [
+        'NextBook was my very first full-stack application.',
+        "Looking back, it's probably one of the projects I'm most proud of because I built it when I was just getting started with web development. Every feature, every bug, and every design decision taught me something new. Also, a fun fact: I didn't use AI while building this project. It was completely handwritten from scratch.",
+        "I'm a huge book lover, but one problem I always faced was deciding what to read next. There are thousands of great books out there, but finding one that actually matches your interests can be surprisingly difficult.",
+        'So my friend and I thought: what if Netflix existed for books?',
+        "That's how NextBook was born.",
+        'When a new user signs up, they answer a few questions about their reading preferences, favourite genres, and books they have enjoyed in the past. Based on this, NextBook recommends books they are likely to enjoy.',
+        'We also built an AI chatbot that users can chat with if they want more personalised recommendations or want to explore a completely different genre.',
+        'Apart from recommendations, users can search for books, keep track of what they have read, and view their reading profile.',
+        'Since this was my first full-stack project, almost everything was new to me. From designing the frontend to building APIs, managing databases, authentication, deployment, and recommendation systems, I learnt by building.',
+        'There were plenty of bugs and moments where things simply refused to work, but solving those problems taught me much more than following tutorials ever could.',
+        "Looking back, I know I would build many parts differently today. But that's exactly why this project is special to me. It reminds me how much I've grown as a developer, and it gave me the confidence to build bigger and better things afterwards.",
+      ],
+    },
+    {
+      slug: 'freely',
+      title: 'FreeLY',
+      period: 'Project',
+      url: 'https://www.freely-ai.com/',
+      description: 'An AI workspace for freelancers that automates proposals, client management, invoices, and day-to-day admin work.',
+      details: [
+        'FreeLY started because I wanted to become a freelancer.',
+        "When I first started learning web development, I thought freelancing would be a great way to earn some extra money and gain experience. But I quickly realised that writing code wasn't the hardest part.",
+        'The hardest part was everything around it.',
+        'Finding clients, writing proposals, replying to messages, sending invoices, keeping track of projects... I was spending more time on admin work than actually building things.',
+        "So I thought, what if AI could take care of all of that?",
+        "That's why I built FreeLY.",
+        'FreeLY is an AI workspace built for freelancers. It helps automate repetitive tasks like writing proposals, managing clients, generating invoices, and handling other day-to-day admin work so freelancers can spend more time doing what they actually enjoy.',
+        'I built the entire product myself, from the frontend to the backend.',
+        "Looking back, the biggest lesson wasn't technical. It was about building products.",
+        'Initially, I built FreeLY for technical freelancers because that was the world I understood. But after speaking to experienced freelancers on platforms like Fiverr and Upwork, I realised something important.',
+        "If a technical freelancer can build a tool like this themselves, they probably don't need it.",
+        "The people who benefit the most are often those who can't build the solution on their own.",
+        "That completely changed how I think about product development. A good product isn't just about solving a problem. It has to solve a problem for the right people.",
+        "Even though FreeLY didn't become what I originally imagined, I'm really glad I built it. It introduced me to freelancers from different backgrounds, helped me understand the challenges they face every day, and taught me lessons about product thinking that I still carry into every project I build today.",
+      ],
+    },
+    {
+      slug: 'explainit',
+      title: 'ExplainIT',
+      period: 'Project',
+      url: 'https://explain-it-seven.vercel.app/',
+      description: 'An AI tool that helps developers understand GitHub repositories by asking questions in plain English.',
+      details: [
+        'ExplainIT is an AI tool that helps developers understand GitHub repositories by asking questions in plain English.',
+        'With AI coding tools becoming better every day, writing code has become much easier than understanding it. I found myself generating features quickly, but after a few days it became difficult to remember where everything was or how different parts of the project were connected.',
+        'I also realised the same problem exists in open source. Before making your first contribution, you spend a lot of time understanding the codebase. ExplainIT tries to make that process easier.',
+        'The user enters a public GitHub repository and ExplainIT creates a knowledge base of the code using a RAG pipeline. Once the repository has been processed, the user can ask questions about how the project works, where a feature is implemented, or how different files are connected.',
+        'Instead of searching through dozens of files, the developer can simply ask the repository.',
+        "One challenge was deciding how to chunk the code before storing it in the vector database. Unlike normal text, code has a lot of structure. Splitting it at the wrong place can separate related functions or classes, making it much harder for the AI to retrieve the right context.",
+        "I experimented with different chunking strategies, from LangChain's built-in methods to semantic chunking models from Hugging Face. Finding a better chunking strategy significantly improved retrieval quality and made the answers much more reliable.",
+        'Building ExplainIT made me realise that AI is not only useful for writing code, but also for understanding it.',
+        'Whether it is AI-generated code, an old side project, or a large open source repository, developers spend a lot of time reading code before they can contribute. If ExplainIT can reduce that time even a little, I think it has done its job.',
+      ],
+    },
+    {
+      slug: 'grid-universe',
+      title: 'Grid Universe Agent',
+      period: 'Project',
+      description: 'An NUS AI agent that navigates a 2D world, solves puzzles, and combines search, machine learning, and computer vision.',
+      details: [
+        'Grid Universe was one of the most challenging projects I worked on during my time at NUS.',
+        'The assignment was to build an AI agent that could navigate a 2D world, solve puzzles, understand visual information, and combine all of these abilities into a single system. It brought together many of the topics we learnt throughout the module, from classical AI to machine learning.',
+        'The project involved implementing search algorithms for pathfinding, training machine learning models for image classification, and building computer vision pipelines to detect objects and reconstruct the game state.',
+        'Why is this project special to me?',
+        'Because this was the project that made me realise I wanted to pursue AI and Machine Learning.',
+        "There were plenty of late nights, moments where nothing worked, and bugs that took hours to figure out. It was easily one of the hardest projects I've done in university.",
+        "But it was also the first time I felt that I wasn't just using AI libraries. I was actually understanding what was happening underneath.",
+        'Training logistic regression models, experimenting with convolutional neural networks, working with computer vision, and seeing how different AI techniques could be combined to solve a single problem completely changed the way I looked at the field.',
+        'Before this project, AI was something I found interesting.',
+        'After this project, I knew it was something I wanted to keep building and learning for a long time.',
+        "Looking back, Grid Universe didn't just teach me algorithms. It gave me confidence that I genuinely enjoyed solving difficult AI problems, even when they took days to figure out. That feeling is what convinced me to specialise in AI and Machine Learning.",
+      ],
+    },
+  ],
+  skills: [
+    {
+      title: 'Programming languages',
+      items: ['Java', 'Javascript', 'SQL', 'R', 'Python', 'C', 'HTML', 'CSS'],
+    },
+    {
+      title: 'Frameworks / Libraries',
+      items: ['React', 'Next.js', 'TailwindCSS', 'Node.js', 'FastAPI', 'Flask'],
+    },
+    {
+      title: 'AI',
+      items: ['PyTorch', 'RAG', 'LangChain', 'LangGraph', 'Hugging Face', 'OpenAI API', 'Pinecone'],
+    },
+    {
+      title: 'Databases',
+      items: ['MongoDB', 'MySQL', 'Firebase', 'AWS (S3)', 'PostgreSQL'],
+    },
+    {
+      title: 'Developer tools',
+      items: [
+        'Git',
+        'VS Code',
+        'Tableau',
+        'v0',
+        'Render',
+        'Vercel',
+        'Figma',
+        'Docker',
+        'Heroku',
+        'Google Cloud',
+        'Stripe',
+        'Power BI',
+        'Azure',
+      ],
+    },
+  ],
+  blogs: [
+    {
+      slug: 'introducing-rubber-duck',
+      title: 'Introducing Rubber Duck',
+      date: 'Jul 2026',
+      excerpt: 'A Socratic learning platform for students based on the rubber duck debugging technique: learn by teaching.',
+      content: [
+        {
+          type: 'paragraph',
+          text: 'Rubber duck is a Socratic learning platform for students that is based on the "Rubber Duck technique" constantly used by coders for debugging.',
+        },
+        {
+          type: 'paragraph',
+          text: 'We follow the principle of "If you can teach something well, you know it". This helps students in three ways:',
+        },
+        {
+          type: 'list',
+          items: [
+            'It allows them to revise what they learnt in class and know where they stand.',
+            'Teaching a concept to the rubber duck lets students practice critical thinking from an early stage. The rubber duck asks "why" and "how", which forces students to reason instead of just memorising facts.',
+            'Talking to the duck helps improve their communication skills.',
+          ],
+        },
+        { type: 'heading', text: 'How it works?' },
+        {
+          type: 'paragraph',
+          text: "It's quite simple. The student selects what chapter they want to revise. The session starts. The student explains a topic from that chapter and the rubber duck then asks some questions to improve the student's understanding of the topic. Students basically learn by teaching (the protégé effect).",
+        },
+        { type: 'heading', text: 'The voice agent' },
+        {
+          type: 'paragraph',
+          text: "Well it is difficult for students to type and typing an entire chapter doesn't make sense, therefore Rubber Duck is a voice agent.",
+        },
+        { type: 'heading', text: 'A challenge we faced' },
+        {
+          type: 'paragraph',
+          text: 'Here are two challenges we are facing while making Rubber Duck:',
+        },
+        {
+          type: 'list',
+          ordered: true,
+          items: [
+            'AI is designed to act like an adult: making AI act like a fellow classmate and ask questions in a "non-teaching" manner is a challenge because most models are fine tuned to behave like "know-it-all" adults.',
+            'Setting the guardrails: we need to be careful because it is easy to over-engineer or make the agent too generic. Over-engineering would force users to talk in "text-bookish" language, which was bad for our users, primary school children. We cannot expect them to repeat things word for word, and that defeats our purpose: understand over memorisation. Finding the right balance is quite important.',
+          ],
+        },
+        { type: 'heading', text: 'Why are we motivated?' },
+        {
+          type: 'paragraph',
+          text: 'Both me and my co-founder value education A LOT. We wanted to build something that genuinely helps students learn better, rather than simply helping them score better.',
+        },
+        {
+          type: 'paragraph',
+          text: 'I have practiced this myself in school. For better understanding, I used to revise concepts by teaching them to my classmates. Their questions helped me think beyond what I already knew and opened new perspectives. It made me confident about the topics I knew, but more importantly I realised what areas I needed to work on.',
+        },
+        { type: 'heading', text: 'Our pilot program' },
+        {
+          type: 'paragraph',
+          text: "Rubber Duck is something that we have been working on for a while. We are quite excited to run our pilot program with students in the upcoming weeks, and get their and their parents' feedback!",
+        },
+      ],
+    },
+  ],
+  experience: [
+    {
+      slug: 'coca-cola-ai-intern',
+      role: 'Artificial Intelligence Intern',
+      company: 'The Coca Cola Company, Singapore',
+      period: 'June 2026 - Present',
+    },
+    {
+      slug: 'rubber-duck-cofounder',
+      role: 'Co-founder',
+      company: 'Rubber Duck',
+      period: 'May 2026 - Present',
+      url: 'https://www.rubberduckai.com/',
+    },
+    {
+      slug: 'willow-founder',
+      role: 'Founder',
+      company: 'Willow',
+      period: 'February 2026 - April 2026',
+    },
+    {
+      slug: 'arch-connect-software-engineer',
+      role: 'Software Engineer',
+      company: 'Arch Connect',
+      period: 'August 2025 - December 2025',
+      url: 'https://arch-connect-huhb.vercel.app/',
+    },
+  ],
+  research: [],
+};
+
+export const profile = {
+  name: 'Manya Agarwal',
+  email: 'maanyaagarwal1504@gmail.com',
+  links: [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/manyaag15/' },
+    { label: 'GitHub', href: 'https://github.com' },
+  ],
+};
