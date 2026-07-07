@@ -7,9 +7,9 @@ const h = React.createElement;
 const navItems = [
   { id: 'about', label: 'About Me' },
   { id: 'education', label: 'Education' },
-  { id: 'skills', label: 'Technical Skills' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Technical Skills' },
   { id: 'blog', label: 'Blog' },
   { id: 'contact', label: 'Contact Me' },
 ];
@@ -17,9 +17,9 @@ const navItems = [
 const sectionTitles = {
   about: { prefix: '01', title: 'About Me' },
   education: { prefix: '02', title: 'My Education' },
-  skills: { prefix: '03', title: 'My Technical Skills' },
-  experience: { prefix: '04', title: 'My Experience' },
-  projects: { prefix: '05', title: 'My Projects' },
+  experience: { prefix: '03', title: 'My Experience' },
+  projects: { prefix: '04', title: 'My Projects' },
+  skills: { prefix: '05', title: 'My Technical Skills' },
   blog: { prefix: '06', title: 'My Blog' },
   contact: { prefix: '07', title: 'Contact Me' },
 };
@@ -96,6 +96,50 @@ function App() {
 
     return () => observer.disconnect();
   }, [isDetailRoute]);
+
+  useEffect(() => {
+    if (isDetailRoute) return undefined;
+
+    const revealSelector = '.reveal-card, .reveal';
+    const show = (element) => {
+      element.style.removeProperty('--reveal-delay-out');
+      element.classList.add('is-visible');
+    };
+    const hide = (element) => {
+      element.style.setProperty('--reveal-delay-out', '0s');
+      element.classList.remove('is-visible');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll(revealSelector).forEach((element) => element.classList.add('is-visible'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) show(entry.target);
+          else hide(entry.target);
+        });
+      },
+      { threshold: 0.1, rootMargin: '-2% 0px -2% 0px' }
+    );
+
+    document.querySelectorAll(revealSelector).forEach((element) => {
+      const parent = element.closest('.card-list, .timeline-list, .skills-list, .about-profile');
+      if (parent) {
+        const siblings = [...parent.querySelectorAll(revealSelector)];
+        const index = siblings.indexOf(element);
+        if (index >= 0) {
+          element.style.setProperty('--reveal-delay', `${index * 0.06}s`);
+        }
+      }
+
+      observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [isDetailRoute, route]);
 
   function navigate(path) {
     window.history.pushState({}, '', path);
@@ -196,22 +240,24 @@ function HomePage({ onJump, onNavigate }) {
     h(Hero, { onJump }),
     h(AboutSection),
     h(EducationSection),
-    h(SkillsSection),
     h(ExperienceSection),
     h(ProjectsSection, { onNavigate }),
+    h(SkillsSection),
     h(BlogSection, { onNavigate }),
     h(ContactSection)
   );
 }
 
 function Hero({ onJump }) {
+  const latestPost = siteData.blogs?.[0];
+
   return h(
     'section',
     { className: 'hero', id: 'hero' },
     h(
       'div',
       { className: 'hero__inner' },
-      h('p', { className: 'hero__eyebrow' }, 'Heyy I am'),
+      h('p', { className: 'hero__greeting' }, "Hi, I'm"),
       h('h1', { className: 'hero__title' }, h('span', { className: 'hero__title-line' }, 'Manya'), h('span', { className: 'hero__title-line' }, 'Agarwal')),
       h(
         'p',
@@ -221,10 +267,24 @@ function Hero({ onJump }) {
       h(
         'p',
         { className: 'hero__experience' },
-        'Currently an AI Intern at The Coca-Cola Company and Founder of Rubber Duck.'
-      ),
-      h('p', { className: 'hero__tagline' }, 'Entrepreneur, builder and AI enthusiast.')
+        'Currently an AI Intern at The Coca-Cola Company and Co-founder of Rubber Duck.'
+      )
     ),
+    latestPost &&
+      h(
+        'div',
+        { className: 'hero__blog-float' },
+        h(
+          'button',
+          {
+            className: 'hero__blog-float-card',
+            onClick: () => onJump('blog'),
+            type: 'button',
+          },
+          h('span', { className: 'hero__blog-float-label' }, 'Latest writing'),
+          h('span', { className: 'hero__blog-float-title' }, latestPost.title)
+        )
+      ),
     h(TerminalPanel),
     h('div', { className: 'hero__visual' }, h('div', { className: 'hero__blob', 'aria-hidden': true }), h('div', { className: 'hero__grid', 'aria-hidden': true }), h('div', { className: 'hero__scan', 'aria-hidden': true })),
     h('button', { className: 'hero__scroll', 'aria-label': 'Scroll to content', onClick: () => onJump('about'), type: 'button' }, h('span', { className: 'hero__scroll-line' }))
@@ -270,7 +330,7 @@ function SectionTitle({ id }) {
   const meta = sectionTitles[id];
   return h(
     'div',
-    { className: 'section__heading' },
+    { className: 'section__heading reveal' },
     h('span', { className: 'section__title-prefix' }, meta.prefix),
     h('h2', { className: 'section__title' }, meta.title)
   );
@@ -299,7 +359,7 @@ function AboutSection() {
       'Role',
       [
         'Artificial Intelligence Intern, The Coca Cola Company',
-        'Founder, Rubber Duck',
+        'Co-founder, Rubber Duck',
       ],
     ],
   ];
@@ -353,7 +413,18 @@ function AboutSection() {
 }
 
 function EducationSection() {
-  return h(TimelineSection, { id: 'education', items: siteData.education, renderItem: renderEducation });
+  const education = siteData.education || [];
+
+  return h(
+    'section',
+    { className: 'section section--education', id: 'education' },
+    h(
+      'div',
+      { className: 'container section-layout' },
+      h(SectionTitle, { id: 'education' }),
+      h('div', { className: 'timeline-list timeline-list--compact' }, education.map(renderEducation))
+    )
+  );
 }
 
 function SkillsSection() {
@@ -373,7 +444,7 @@ function SkillsSection() {
           ? skills.map((group) =>
               h(
                 'div',
-                { className: 'skills-item', key: group.title },
+                { className: 'skills-item reveal', key: group.title },
                 h('span', { className: 'skills-item__label' }, `${group.title}:`),
                 h('p', { className: 'skills-item__value' }, group.items.join(', '))
               )
@@ -394,6 +465,7 @@ function ProjectsSection({ onNavigate }) {
 
 function BlogSection({ onNavigate }) {
   const posts = siteData.blogs || [];
+
   return h(
     'section',
     { className: 'section section--blog', id: 'blog' },
@@ -613,7 +685,7 @@ function ContactSection() {
       h(SectionTitle, { id: 'contact' }),
       h(
         'div',
-        { className: 'contact__content about-copy' },
+        { className: 'contact__content about-copy reveal' },
         h(
           'p',
           { className: 'about__lead regular-stix-32px' },

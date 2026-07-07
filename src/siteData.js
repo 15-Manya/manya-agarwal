@@ -132,7 +132,7 @@ export const siteData = {
   blogs: [
     {
       slug: 'introducing-rubber-duck',
-      title: 'Introducing Rubber Duck',
+      title: 'Introducing Rubber Duck 🐥',
       date: 'Jul 2026',
       excerpt: 'A Socratic learning platform for students based on the rubber duck debugging technique: learn by teaching.',
       content: [
@@ -228,6 +228,6 @@ export const profile = {
   email: 'maanyaagarwal1504@gmail.com',
   links: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/manyaag15/' },
-    { label: 'GitHub', href: 'https://github.com' },
+    { label: 'GitHub', href: 'https://github.com/15-Manya' },
   ],
 };
